@@ -1,7 +1,5 @@
 package com.github.kancyframework.validationplus.utils;
 
-import com.sun.istack.internal.Nullable;
-
 /**
  * 字符串工具
  *
@@ -10,15 +8,15 @@ import com.sun.istack.internal.Nullable;
  */
 public class StringUtils {
 
-    public static boolean isEmpty(@Nullable Object str) {
+    public static boolean isEmpty(Object str) {
         return (str == null || "".equals(str));
     }
 
-    public static boolean hasLength(@Nullable String str) {
+    public static boolean hasLength(String str) {
         return (str != null && !str.isEmpty());
     }
 
-    public static boolean hasText(@Nullable CharSequence str) {
+    public static boolean hasText(CharSequence str) {
         return (str != null && str.length() > 0 && containsText(str));
     }
 
@@ -30,20 +28,5 @@ public class StringUtils {
             }
         }
         return false;
-    }
-
-    @Nullable
-    public static String[] split(@Nullable String toSplit, @Nullable String delimiter) {
-        if (!hasLength(toSplit) || !hasLength(delimiter)) {
-            return null;
-        }
-        int offset = toSplit.indexOf(delimiter);
-        if (offset < 0) {
-            return null;
-        }
-
-        String beforeDelimiter = toSplit.substring(0, offset);
-        String afterDelimiter = toSplit.substring(offset + delimiter.length());
-        return new String[] {beforeDelimiter, afterDelimiter};
     }
 }

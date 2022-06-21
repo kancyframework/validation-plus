@@ -7,7 +7,7 @@
     <groupId>com.github.kancyframework</groupId>
     <artifactId>validation-plus</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-RELEASE</version>
     <description>Spring Boot validation Enhanced Framework</description>
     <modules>
         <module>validation-plus-api</module>
