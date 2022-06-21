@@ -51,17 +51,17 @@ public class Request {
     private String md5Check = UUID.randomUUID().toString().replace("-", "");
 
     @In("A,B,C")
-    @Assert(value = "#in(inChek, ['A','B','C'])")
+    @Assert(value = "#in(inChek, {'A','B','C'})")
     private String inChek = "A";
 
     @NotIn({"A","B","C"})
-    @Assert(value = "#notin(notInChek, ['A','B','C'])")
+    @Assert(value = "#notin(notInChek, {'A','B','C'})")
     private String notInChek = "D";
 
     @MobilePhone
     private String mobile = "18079637001";
 
-    @Numeric(min = 100, max = 200)
+    @Numeric(min = 10, max = 200)
     private String numeric = "90.2";
 
     @HeadTail(head = "a", tail = "c")
