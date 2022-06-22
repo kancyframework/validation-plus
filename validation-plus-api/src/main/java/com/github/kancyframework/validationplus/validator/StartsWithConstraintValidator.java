@@ -18,7 +18,13 @@ public class StartsWithConstraintValidator extends CheckEmptyConstraintValidator
     @Override
     protected boolean check(String value) {
         // 开头
-        return value.startsWith(annotation.value());
+        String[] items = annotation.value();
+        for (String item : items) {
+            if (value.startsWith(item)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

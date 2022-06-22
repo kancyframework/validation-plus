@@ -37,7 +37,7 @@ public @interface EndsWith {
      * 结束为
      * @return
      */
-    String value() default "";
+    String[] value();
 
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
     @Retention(RUNTIME)

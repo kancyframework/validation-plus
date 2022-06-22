@@ -85,5 +85,14 @@ public class Request {
     @NotNullOrEmpty
     private String notNullOrEmpty = "1";
 
+    @Assert(value = "group1 == '1'", groups = GroupA.class)
+    private String group1 = "1";
+
+    @Assert(value = "group2 == '2'", groups = {GroupB.class, GroupC.class})
+    private String group2 = "2";
+
+    @Assert(value = "group3 == '3' ")
+    private String group3 = "3";
+
 
 }

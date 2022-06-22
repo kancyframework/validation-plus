@@ -1,5 +1,6 @@
 package com.kancy.validationplus.demo.controller;
 
+import com.kancy.validationplus.demo.entity.GroupA;
 import com.kancy.validationplus.demo.entity.Request;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,4 +54,13 @@ public class TestController implements ExceptionHandlerController{
         return R.success();
     }
 
+    @PostMapping("/test6")
+    public R<Object> test6(@Validated(GroupA.class) @RequestBody Request request){
+        return R.success();
+    }
+
+    @PostMapping("/test7")
+    public R<Object> test7(@Validated @RequestBody Request request){
+        return R.success();
+    }
 }

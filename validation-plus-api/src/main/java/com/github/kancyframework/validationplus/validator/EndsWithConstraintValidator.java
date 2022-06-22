@@ -21,7 +21,13 @@ public class EndsWithConstraintValidator extends CheckEmptyConstraintValidator<E
     @Override
     protected boolean check(String value) {
         // 结尾
-        return value.endsWith(annotation.value());
+        String[] items = annotation.value();
+        for (String item : items) {
+            if (value.endsWith(item)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -21,6 +21,7 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
@@ -62,6 +63,7 @@ public class AssertConstraintValidator extends AbstractBeanFactoryAwareAdvisingP
         }
 
         Method invocationMethod = invocation.getMethod();
+
         Parameter[] parameters = invocationMethod.getParameters();
         String[] parameterNames = parameterNameDiscoverer.getParameterNames(invocationMethod);
 
@@ -109,12 +111,27 @@ public class AssertConstraintValidator extends AbstractBeanFactoryAwareAdvisingP
                 // 一个EvaluationContext只能有一个RootObject，引用它的属性时，可以不加前缀
                 ctx.setRootObject(argument);
 
+                List<Class<?>> groups = Collections.emptyList();
+                Validated validated = parameters[i].getAnnotation(Validated.class);
+                if (Objects.nonNull(validated)){
+                    groups = Arrays.asList(validated.value());
+                }
                 for (AssertMetaData metaData : metaDataList) {
                     for (Assert annotation : metaData.getAsserts()) {
+                        // 按照分组过滤,
+                        Class<?>[] assertGroups = annotation.groups();
+                        if (assertGroups.length > 0){
+                            if (Arrays.stream(assertGroups).noneMatch(groups::contains)){
+                                System.err.println(metaData.getParamName());
+                                System.err.println(parser.parseExpression(annotation.value()).getValue(ctx));
+                                continue;
+                            }
+                        }
                         //表达式放置
                         Expression exp = parser.parseExpression(annotation.value());
                         //getValue有参数ctx，从新的容器中根据SpEL表达式获取所需的值
                         boolean result = Objects.equals(exp.getValue(ctx, Boolean.class), annotation.result());
+
                         if (!result) {
                             String message = annotation.message();
                             if (StringUtils.isEmpty(message)) {
