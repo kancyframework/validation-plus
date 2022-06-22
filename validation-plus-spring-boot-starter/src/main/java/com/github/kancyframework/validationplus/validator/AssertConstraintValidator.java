@@ -122,8 +122,6 @@ public class AssertConstraintValidator extends AbstractBeanFactoryAwareAdvisingP
                         Class<?>[] assertGroups = annotation.groups();
                         if (assertGroups.length > 0){
                             if (Arrays.stream(assertGroups).noneMatch(groups::contains)){
-                                System.err.println(metaData.getParamName());
-                                System.err.println(parser.parseExpression(annotation.value()).getValue(ctx));
                                 continue;
                             }
                         }
