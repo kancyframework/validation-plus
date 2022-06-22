@@ -43,7 +43,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spring-boot.version>2.1.10.RELEASE</spring-boot.version>
+        <spring-boot.version>2.6.6</spring-boot.version>
     </properties>
 
     <dependencies>
