@@ -6,7 +6,7 @@
 
     <groupId>com.kancy.validationplus.demo</groupId>
     <artifactId>demo-validation-plus-spring-boot-starter</artifactId>
-    <version>0.0.2-RELEASE</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>demo-validation-plus-spring-boot-starter</name>
     <description>写一句话描述你的项目</description>
 
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.github.kancyframework</groupId>
             <artifactId>validation-plus-spring-boot-starter</artifactId>
-            <version>0.0.2-RELEASE</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
