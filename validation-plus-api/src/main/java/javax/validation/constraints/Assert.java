@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * <p>
- * Spel自定义断言
+ * Spel自定义断言 (Spring环境)
  * <p>
  *
  * @author kancy
